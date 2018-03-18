@@ -1,0 +1,98 @@
+Cooler Master V Series RS-A00-AFBA-G1
+
+http://www.e-katalog.ru/jpg/288303.jpg
+Cooler Master
+12150
+1000
+END
+Deepcool Aurora DA500
+Блок питания бюджетного класса, главным образом предназначенный для комплектации ПК средней мощности. Подходит для корпуса в форм-факторе АТХ. Deepcool Aurora DA500 обеспечивает должный уровень стабильности основных напряжений и прошла сертификацию 80 Plus Bronze. КПД находится на уровне 85%, что позволяет блоку питания оставаться в меру теплым даже при пиковых нагрузках, возникающих на протяжении длительного времени. Есть активная система охлаждения в виде нешумного кулера. Заявленное производителем время наработки на отказ составляет 100 000 часов, а гарантия — 3 года. Входное напряжение сети составляет 110/220 В. Предусмотрено три линии напряжения: 12, 5 и 3,3 В. Главный разъем представлен соединение 20+4 pin, разъем CPU — 1х4+4 pin, а PCI-E — 2х6+2 pin. Также есть 5 разъемов SATA (15 pin) и 3 разъема Moliex (4 pin). Длина главного кабеля питания составляет 1400 мм. Отсек вентилятора наполовину прикрыт прозрачным пластиком, что позволяет кулеру легко фокусировать и равномерно распределять поток воздуха по плате. Уровень шума вентилятора находится на отметке 33 дБ, что является отличным показателем для блока питания с суммарной мощностью 500 Вт.
+http://www.e-katalog.ru/jpg/455722.jpg
+Deepcool
+2481
+500
+END
+Thermaltake TR2 S TRS-0500P-2
+
+http://www.e-katalog.ru/jpg/799627.jpg
+Thermaltake
+2456
+500
+END
+Accord ATX 80+ ACC-500W-80BR
+
+http://www.e-katalog.ru/jpg/1103303.jpg
+Accord
+2054
+500
+END
+Corsair CX Series CP-9020103-EU
+
+http://www.e-katalog.ru/jpg/850960.jpg
+Corsair
+5112
+650
+END
+Gamemax GM Series 1050
+
+http://www.e-katalog.ru/jpg/708936.jpg
+Gamemax
+
+1050
+END
+Zalman GVM ZM850
+
+http://www.e-katalog.ru/jpg/497539.jpg
+Zalman
+
+850
+END
+Aerocool Value VX-500
+
+http://www.e-katalog.ru/jpg/362428.jpg
+Aerocool
+1344
+500
+END
+Zalman LE II ZM500
+
+http://www.e-katalog.ru/jpg/887142.jpg
+Zalman
+2105
+500
+END
+Aerocool HIGGS 650W
+
+http://www.e-katalog.ru/jpg/912651.jpg
+Aerocool
+3851
+650
+END
+Aerocool Kcas 600W
+
+http://www.e-katalog.ru/jpg/441647.jpg
+Aerocool
+2700
+600
+END
+Chieftec Power Smart GPS-650C
+
+http://www.e-katalog.ru/jpg/916548.jpg
+Chieftec
+4156
+650
+END
+Corsair RMx Series CP-9020094-EU
+
+http://www.e-katalog.ru/jpg/767150.jpg
+Corsair
+16751
+1000
+END
+FSP PNR-I ATX-500
+
+http://www.e-katalog.ru/jpg/913461.jpg
+FSP
+1869
+500
+END

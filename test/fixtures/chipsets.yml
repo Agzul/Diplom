@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  overclocking: false
+  pci_e_x16_num: 1
+  sli_crossfire: MyString
+  ram_num: 1
+  cpu_socket: one
+  interface: one
+
+two:
+  name: MyString
+  overclocking: false
+  pci_e_x16_num: 1
+  sli_crossfire: MyString
+  ram_num: 1
+  cpu_socket: two
+  interface: two

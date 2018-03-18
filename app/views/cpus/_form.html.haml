@@ -1,0 +1,46 @@
+= bootstrap_form_for @cpu do |f|
+  = f.alert_message "Пожалуйста, исправьте ошибки ниже."
+  = f.text_field :name
+  = f.text_area  :description
+  = f.file_field :image
+
+  -# nested start
+  .nested_container#nested_container_company
+    .btn.btn-success.nested_button#nested_button_add_company +
+    .btn.btn-warning.nested_button#nested_button_edit_company #
+    = f.submit 'x', class: "btn btn-danger nested_button", id: 'nested_button_destroy_company', data: {confirm: t('buttons.confirm.company')}
+    = f.collection_select(:company_id, Company.all, :id, :name)
+    #nested_form_company
+      =render "nested_company_form", f: f
+  -# nested finish
+
+  = f.text_field :price
+
+  -# nested start
+  .nested_container#nested_container_cpu_socket
+    .btn.btn-success.nested_button#nested_button_add_cpu_socket +
+    .btn.btn-warning.nested_button#nested_button_edit_cpu_socket #
+    = f.submit 'x', class: "btn btn-danger nested_button", id: 'nested_button_destroy_cpu_socket', data: {confirm: t('buttons.confirm.cpu_socket')}
+    = f.collection_select(:cpu_socket_id, CpuSocket.all, :id, :name)
+    #nested_form_cpu_socket
+      =render "nested_cpu_socket_form", f: f
+  -# nested finish
+
+  = f.text_field :core
+  = f.number_field :core_num
+  = f.text_field :core_speed
+  = f.check_box :overclocking
+
+  -# nested start
+  .nested_container#nested_container_video_core
+    .btn.btn-success.nested_button#nested_button_add_video_core +
+    .btn.btn-warning.nested_button#nested_button_edit_video_core #
+    = f.submit 'x', class: "btn btn-danger nested_button", id: 'nested_button_destroy_video_core', data: {confirm: t('buttons.confirm.video_core')}
+    = f.collection_select(:video_core_id, VideoCore.all, :id, :name)
+    #nested_form_video_core
+      =render "nested_video_core_form", f: f
+  -# nested finish
+
+  = f.number_field :tdp
+  = f.text_field :game_benchmark
+  = f.submit t('buttons.create'), class: "btn btn-success"

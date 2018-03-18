@@ -1,0 +1,32 @@
+%h1= t('activerecord.models.cpus')
+= link_to new_cpu_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.cpu')
+%table.table.table-responsive
+  - @cpus.each do |cpu|
+    %thead
+      %tr.center.hidden-xss
+        %th
+        %th= t('activerecord.attributes.cpu.name')
+        %th= t('activerecord.attributes.cpu.socket')
+        %th= t('activerecord.attributes.cpu.core')
+        %th= t('activerecord.attributes.cpu.video_core_id')
+        %th= t('activerecord.attributes.cpu.price')
+        %th
+    %tbody
+      %tr
+        %td= link_to image_tag(cpu.image.url(:thumb)), cpu if cpu.image.exists?
+        %td.inline-block-xss= cpu.name
+        %td.inline-block-xss= cpu.cpu_socket.name
+        %td.inline-block-xss #{cpu.core_num} ядерный процессор #{cpu.core} с частотой #{cpu.core_speed}
+        %td.inline-block-xss= cpu.video_core.name
+        %td.inline-block-xss #{cpu.price}Р
+        %td.right
+          = link_to cpu, class: 'btn btn-info' do
+            = fa_icon :eye
+          .row
+          = link_to edit_cpu_path(cpu), class: 'btn btn-warning' do
+            = fa_icon :edit
+          .row
+          = link_to cpu, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.cpu') } do
+            = fa_icon :times

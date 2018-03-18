@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @motherboard.name
+%p
+  %b Description:
+  = @motherboard.description
+%p
+  %b Image:
+  = image_tag(@motherboard.image.url(:thumb)) if @motherboard.image.exists?
+%p
+  %b Company:
+  = @motherboard.company.name
+%p
+  %b Price:
+  = @motherboard.price
+%p
+  %b Chipset:
+  = @motherboard.chipset.name unless @motherboard.chipset.nil?
+%p
+  %b pci_e_x16_num:
+  = @motherboard.pci_e_x16_num
+%p
+  %b sli_crossfire:
+  = @motherboard.sli_crossfire
+%p
+  %b Ram num && type && speed:
+  #{@motherboard.ram_num} слота #{@motherboard.ram_type.name}, #{@motherboard.ram_type.speed}
+%p
+  %b Bios:
+  = @motherboard.bios
+%p
+  %b Audio:
+  = @motherboard.audio
+%p
+  %b Form factor:
+  = @motherboard.form_factor
+
+= link_to 'Edit', edit_motherboard_path(@motherboard)
+\|
+= link_to 'Back', motherboards_path

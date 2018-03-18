@@ -1,0 +1,4 @@
+= f.fields_for :cpu_socket do |ff|
+  .col-md-6
+    = ff.text_field :name
+    = ff.text_field :_destroy, type: 'hidden'

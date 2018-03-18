@@ -1,0 +1,31 @@
+%h1= t('activerecord.models.video_cards')
+= link_to new_video_card_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.video_card')
+%table.table.table-responsive
+  - @video_cards.each do |video_card|
+    %thead
+      %tr.center.hidden-xss
+        %th
+        %th= t('activerecord.attributes.video_card.name')
+        %th= t('activerecord.attributes.video_card.memory')
+        %th= t('activerecord.attributes.video_card.tdp')
+        %th= t('activerecord.attributes.video_card.price')
+        %th
+
+    %tbody
+      %tr
+        %td= link_to image_tag(video_card.image.url(:thumb)), video_card if video_card.image.exists?
+        %td.inline-block-xss= video_card.name
+        %td.inline-block-xss #{video_card.volume} Мб видеопамяти #{video_card.memory} с частотой #{video_card.speed}
+        %td.inline-block-xss #{video_card.tdp} Вт
+        %td.inline-block-xss #{video_card.price}Р
+        %td.right
+          = link_to video_card, class: 'btn btn-info' do
+            = fa_icon :eye
+          .row
+          = link_to edit_video_card_path(video_card), class: 'btn btn-warning' do
+            = fa_icon :edit
+          .row
+          = link_to video_card, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.video_card') } do
+            = fa_icon :times

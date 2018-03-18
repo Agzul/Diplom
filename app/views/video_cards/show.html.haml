@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @video_card.name
+%p
+  %b Description:
+  = @video_card.description
+%p
+  %b Image:
+  = @video_card.image
+%p
+  %b Company:
+  = @video_card.company
+%p
+  %b Price:
+  = @video_card.price
+%p
+  %b Speed:
+  = @video_card.speed
+%p
+  %b Volume:
+  = @video_card.volume
+%p
+  %b Type:
+  = @video_card.memory
+%p
+  %b Tdp:
+  = @video_card.tdp
+%p
+  %b Game benchmark:
+  = @video_card.game_benchmark
+
+= link_to 'Edit', edit_video_card_path(@video_card)
+\|
+= link_to 'Back', video_cards_path

@@ -1,0 +1,29 @@
+%h1= t('activerecord.models.power_supplies')
+= link_to new_power_supply_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.power_supply')
+%table.table.table-responsive
+  - @power_supplies.each do |power_supply|
+    %thead
+      %tr.center.hidden-xss
+        %th
+        %th= t('activerecord.attributes.power_supply.name')
+        %th= t('activerecord.attributes.power_supply.power')
+        %th= t('activerecord.attributes.power_supply.price')
+        %th
+
+    %tbody
+      %tr.center
+        %td= link_to image_tag(power_supply.image.url(:thumb)), power_supply
+        %td.inline-block-xss= power_supply.name
+        %td.inline-block-xss #{power_supply.power}Вт
+        %td.inline-block-xss #{power_supply.price}Р
+        %td.right
+          = link_to power_supply, class: 'btn btn-info' do
+            = fa_icon :eye
+          .row
+          = link_to edit_power_supply_path(power_supply), class: 'btn btn-warning' do
+            = fa_icon :edit
+          .row
+          = link_to power_supply, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.power_supply') } do
+            = fa_icon :times

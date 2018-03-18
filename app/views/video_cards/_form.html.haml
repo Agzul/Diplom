@@ -1,0 +1,21 @@
+= bootstrap_form_for @video_card do |f|
+  = f.alert_message "Пожалуйста, исправьте ошибки ниже."
+  = f.text_field :name
+  = f.text_area :description
+  = f.file_field :image
+  -# nested start
+  .nested_container#nested_container_company
+    .btn.btn-success.nested_button#nested_button_add_company +
+    .btn.btn-warning.nested_button#nested_button_edit_company #
+    = f.submit 'x', class: "btn btn-danger nested_button", id: 'nested_button_destroy_company', data: {confirm: t('buttons.confirm.company')}
+    = f.collection_select(:company_id, Company.all, :id, :name)
+    #nested_form_company
+      =render "nested_company_form", f: f
+  -# nested finish
+  = f.text_field :price
+  = f.text_field :speed
+  = f.number_field :volume
+  = f.text_field :memory
+  = f.number_field :tdp
+  = f.text_field :game_benchmark
+  = f.submit t('buttons.create'), class: "btn btn-success"

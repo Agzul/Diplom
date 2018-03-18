@@ -1,0 +1,31 @@
+%h1= t('activerecord.models.rams')
+= link_to new_ram_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.ram')
+%table.table.table-responsive
+  - @rams.each do |ram|
+    %thead
+      %tr.center.hidden-xss
+        %th
+        %th= t('activerecord.attributes.ram.name')
+        %th= t('activerecord.attributes.ram.ram_type_id')
+        %th= t('activerecord.attributes.ram.volume')
+        %th= t('activerecord.attributes.ram.price')
+        %th
+
+    %tbody
+      %tr
+        %td= link_to image_tag(ram.image.url(:thumb)), ram if ram.image.exists?
+        %td.inline-block-xss= ram.name
+        %td.inline-block-xss #{ram.ram_type.name}-#{ram.ram_type.speed}
+        %td.inline-block-xss #{ram.volume}Гб
+        %td.inline-block-xss #{ram.price}Р
+        %td.right
+          = link_to ram, class: 'btn btn-info' do
+            = fa_icon :eye
+          .row
+          = link_to edit_ram_path(ram), class: 'btn btn-warning' do
+            = fa_icon :edit
+          .row
+          = link_to ram, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.ram') } do
+            = fa_icon :times

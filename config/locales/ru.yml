@@ -1,0 +1,140 @@
+ru:
+  buttons:
+    create: Создать
+    confirm:
+      motherboard:  Действительно удалить материнскую плату?
+      ssd:          Действительно удалить SSD?
+      hdd:          Действительно удалить жесткий диск?
+      ram:          Действительно удалить оперативную память?
+      cpu:          Действительно удалить процессор?
+      video_card:   Действительно удалить видеокарту?
+      power_supply: Действительно удалить блок питания?
+      chipset:      Действительно удалить chipset? Это так же удалит все материнские платы с данным chipset'ом!
+      ram_type:     Действительно удалить тип памяти? Это так же удалит все комплектующие с данным типом памяти!
+      company:      Действительно удалить компанию? Это так же удалит все товары данной компании!
+      cpu_socket:   Действительно удалить socket? Это так же удалит все комплектующие с данным socket'ом!
+      video_core:   Действительно удалить видеоядро? Это так же удалит все комплектующие с данным видеоядром!
+    new:
+      motherboard:  Новая материнская плата
+      ssd:          Новый SSD
+      hdd:          Новый жесткий диск
+      ram:          Новая оперативная память
+      cpu:          Новый процессор
+      video_card:   Новая видеокарта
+      power_supply: Новый блок питания
+  activerecord:
+    models:
+      motherboard:  Материнская плата
+      ssd:          SSD
+      hdd:          Жесткий диск
+      ram:          Оперативная память
+      cpu:          Процессор
+      video_card:   Видеокарта
+      power_supply: Блок питания
+      cpu_socket:   Socket
+      video_core:   Видеоядро
+
+      motherboards:   Материнские платы
+      ssds:           SSD's
+      hdds:           Жесткие диски
+      rams:           Модули памяти
+      cpus:           Процессоры
+      video_cards:    Видеокарты
+      power_supplies: Блоки питания
+      cpu_sockets:    Socket'ы
+      video_cores:    Видеоядра
+
+    attributes:
+      motherboard:
+        name:          Название
+        description:   Описание
+        image:         Изображение
+        company_id:    Компания
+        price:         Цена
+        cpu_socket_id: Socket
+        chipset_id:    Chipset
+        pci_e_x16_num: Количество слотов pci e x16
+        sli_crossfire: SLI/Crossfire
+        ram_num:       Количество ОЗУ
+        ram_type_id:   ОЗУ
+        bios:          BIOS
+        audio:         Аудио
+        form_factor:   Форм-фактор
+      ssd:
+        name:        Название
+        description: Описание
+        image:       Изображение
+        company_id:  Компания
+        price:       Цена
+        volume:      Объем
+        size:        Размер
+        write_speed: Скорость записи
+        read_speed:  Скорость чтения
+      hdd:
+        name:           Название
+        description:    Описание
+        image:          Изображение
+        company_id:     Компания
+        price:          Цена
+        volume:         Объем
+        size:           Размер
+        rotation_speed: Скорость вращения
+        write_speed:    Скорость записи
+        read_speed:     Скорость чтения
+      ram:
+        name:        Название
+        description: Описание
+        image:       Изображение
+        company_id:  Компания
+        price:       Цена
+        volume:      Объем
+        ram_type_id: Тип
+      cpu:
+        name:           Название
+        description:    Описание
+        image:          Изображение
+        company_id:     Компания
+        price:          Цена
+        core:           Ядро
+        core_num:       Количество ядер
+        core_speed:     Частота процессора
+        overclocking:   Разгоняема?
+        tdp:            Тепловыделение
+        game_benchmark: Игровой тест производительности
+        video_core_id:  Встроенное видеоядро
+        cpu_socket_id:  Socket
+      video_card:
+        name:           Название
+        description:    Описание
+        image:          Изображение
+        company_id:     Компания
+        price:          Цена
+        speed:          Частота графического процессора
+        volume:         Объем видеопамяти
+        memory:         Тип видеопамяти
+        tdp:            Тепловыделение
+        game_benchmark: Игровой тест производительности
+      power_supply:
+        name:        Название
+        description: Описание
+        image:       Изображение
+        company_id:  Компания
+        price:       Цена
+        power:       Мощность
+
+      company:
+        name: Название
+      ram_type:
+        name:  Тип
+        speed: Скорость
+      chipset:
+        name:          Название
+        overclocking:  Разгон
+        ram_num:       Количество модулей памяти
+        cpu_socket_id: Socket
+      cpu_socket:
+        name: Название
+      video_core:
+        name:           Название
+        speed:          Скорость
+        game_benchmark: Игровой тест производительности

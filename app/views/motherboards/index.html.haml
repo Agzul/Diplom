@@ -1,0 +1,34 @@
+%h1= t('activerecord.models.motherboards')
+= link_to new_motherboard_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.motherboard')
+%table.table.table-responsive
+  - @motherboards.each do |motherboard|
+    %thead
+      %tr.center.hidden-xss
+        %th
+        %th= t('activerecord.attributes.motherboard.name')
+        %th= t('activerecord.attributes.motherboard.cpu_socket_id')
+        %th= t('activerecord.attributes.motherboard.chipset_id')
+        %th= t('activerecord.attributes.motherboard.ram_type_id')
+        %th= t('activerecord.attributes.motherboard.sli_crossfire')
+        %th= t('activerecord.attributes.motherboard.price')
+        %th
+    %tbody
+      %tr.center
+        %td= link_to image_tag(motherboard.image.url(:thumb)), motherboard if motherboard.image.exists?
+        %td.inline-block-xss= motherboard.name
+        %td.inline-block-xss= motherboard.chipset.cpu_socket.name unless motherboard.chipset.nil?
+        %td.inline-block-xss= motherboard.chipset.name unless motherboard.chipset.nil?
+        %td.inline-block-xss #{motherboard.ram_num} слота #{motherboard.ram_type.name}, #{motherboard.ram_type.speed}
+        %td.inline-block-xss= motherboard.sli_crossfire
+        %td.inline-block-xss #{motherboard.price}Р
+        %td.right
+          = link_to motherboard, class: 'btn btn-info' do
+            = fa_icon :eye
+          .row
+          = link_to edit_motherboard_path(motherboard), class: 'btn btn-warning' do
+            = fa_icon :edit
+          .row
+          = link_to motherboard, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.motherboard') } do
+            = fa_icon :times

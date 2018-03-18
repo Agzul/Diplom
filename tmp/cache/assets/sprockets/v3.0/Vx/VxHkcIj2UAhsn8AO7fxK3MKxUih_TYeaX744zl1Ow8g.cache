@@ -1,0 +1,13 @@
+I"T(function() {
+  var all_ready;
+
+  all_ready = function() {
+    if (this.current_controller === "hdds" && this.current_action !== "index" && this.current_action !== "show") {
+      return window.nested_buttons_company(this.current_controller, this.current_action);
+    }
+  };
+
+  $(document).on('turbolinks:load', all_ready);
+
+}).call(this);
+:ET

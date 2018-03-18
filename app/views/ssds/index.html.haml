@@ -1,0 +1,33 @@
+%h1= t('activerecord.models.ssds')
+= link_to new_ssd_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.ssd')
+%table.table.table-responsive
+  - @ssds.each do |ssd|
+    %thead
+      %tr.center.hidden-xss
+        %th
+        %th= t('activerecord.attributes.ssd.name')
+        %th= t('activerecord.attributes.ssd.volume')
+        %th= t('activerecord.attributes.ssd.write_speed')
+        %th= t('activerecord.attributes.ssd.read_speed')
+        %th= t('activerecord.attributes.ssd.price')
+        %th
+
+    %tbody
+      %tr.center
+        %td= link_to image_tag(ssd.image.url(:thumb)), ssd if ssd.image.exists?
+        %td.inline-block-xss= ssd.name
+        %td.inline-block-xss #{ssd.volume}Mb
+        %td.inline-block-xss #{ssd.write_speed}mb/s
+        %td.inline-block-xss #{ssd.read_speed}mb/s
+        %td.inline-block-xss #{ssd.price}Р
+        %td.right
+          = link_to ssd, class: 'btn btn-info' do
+            = fa_icon :eye
+          .row
+          = link_to edit_ssd_path(ssd), class: 'btn btn-warning' do
+            = fa_icon :edit
+          .row
+          = link_to ssd, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.ssd') } do
+            = fa_icon :times

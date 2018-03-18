@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title GPC
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag 'favicon.ico'
+    -#= favicon_link_tag 'favicon.ico', size: '152x152', rel: 'apple-touch-icon'
+    %meta{name: "viewport", content: "width=device-width; initial-scale=1.0"}
+    %meta{charset: "utf-8"}
+  %body{class: "#{controller_name} #{action_name}"}
+    .wrapper.container
+      %header
+        %nav
+          = render "layouts/nav"
+      .row
+        %section
+          = yield
+    %footer.footer
+      = render "layouts/footer"

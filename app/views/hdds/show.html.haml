@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @hdd.name
+%p
+  %b Description:
+  = @hdd.description
+%p
+  %b Image:
+  = @hdd.image
+%p
+  %b Company:
+  = @hdd.company
+%p
+  %b Price:
+  = @hdd.price
+%p
+  %b Volume:
+  = @hdd.volume
+%p
+  %b Size:
+  = @hdd.size
+%p
+  %b Rotation speed:
+  = @hdd.rotation_speed
+%p
+  %b Write speed:
+  = @hdd.write_speed
+%p
+  %b Read speed:
+  = @hdd.read_speed
+
+= link_to 'Edit', edit_hdd_path(@hdd)
+\|
+= link_to 'Back', hdds_path

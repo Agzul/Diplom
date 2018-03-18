@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ssd.name
+%p
+  %b Description:
+  = @ssd.description
+%p
+  %b Image:
+  = @ssd.image
+%p
+  %b Company:
+  = @ssd.company
+%p
+  %b Price:
+  = @ssd.price
+%p
+  %b Volume:
+  = @ssd.volume
+%p
+  %b Size:
+  = @ssd.size
+%p
+  %b Write speed:
+  = @ssd.write_speed
+%p
+  %b Read speed:
+  = @ssd.read_speed
+
+= link_to 'Edit', edit_ssd_path(@ssd)
+\|
+= link_to 'Back', ssds_path

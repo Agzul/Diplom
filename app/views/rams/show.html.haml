@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ram.name
+%p
+  %b Description:
+  = @ram.description
+%p
+  %b Image:
+  = @ram.image
+%p
+  %b Company:
+  = @ram.company
+%p
+  %b Price:
+  = @ram.price
+%p
+  %b Ram type:
+  = @ram.ram_type
+%p
+  %b Volume:
+  = @ram.volume
+
+= link_to 'Edit', edit_ram_path(@ram)
+\|
+= link_to 'Back', rams_path

@@ -1,0 +1,5 @@
+= f.fields_for :ram_type do |ff|
+  .col-md-6
+    = ff.text_field :name
+    = ff.text_field :speed
+    = ff.text_field :_destroy, type: 'hidden'

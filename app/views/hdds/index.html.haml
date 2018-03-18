@@ -1,0 +1,35 @@
+%h1= t('activerecord.models.hdds')
+= link_to new_hdd_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.hdd')
+%table.table.table-responsive
+  - @hdds.each do |hdd|
+    %thead
+      %tr.center.hidden-xss
+        %th
+        %th= t('activerecord.attributes.hdd.name')
+        %th= t('activerecord.attributes.hdd.volume')
+        %th= t('activerecord.attributes.hdd.rotation_speed')
+        %th= t('activerecord.attributes.hdd.write_speed')
+        %th= t('activerecord.attributes.hdd.read_speed')
+        %th= t('activerecord.attributes.hdd.price')
+        %th
+
+    %tbody
+      %tr.center
+        %td= link_to image_tag(hdd.image.url(:thumb)), hdd if hdd.image.exists?
+        %td.inline-block-xss= hdd.name
+        %td.inline-block-xss #{hdd.volume}Mb
+        %td.inline-block-xss #{hdd.rotation_speed}rpm
+        %td.inline-block-xss #{hdd.write_speed}mb/s
+        %td.inline-block-xss #{hdd.read_speed}mb/s
+        %td.inline-block-xss #{hdd.price}Р
+        %td.right
+          = link_to hdd, class: 'btn btn-info' do
+            = fa_icon :eye
+          .row
+          = link_to edit_hdd_path(hdd), class: 'btn btn-warning' do
+            = fa_icon :edit
+          .row
+          = link_to hdd, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.hdd') } do
+            = fa_icon :times

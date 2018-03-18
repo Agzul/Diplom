@@ -1,0 +1,6 @@
+= f.fields_for :video_core do |ff|
+  .col-md-6
+    = ff.text_field :name
+    = ff.text_field :speed
+    = ff.text_field :game_benchmark
+    = ff.text_field :_destroy, type: 'hidden'

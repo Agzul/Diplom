@@ -1,0 +1,47 @@
+= bootstrap_form_for @motherboard do |f|
+  = f.alert_message "Пожалуйста, исправьте ошибки ниже."
+  = f.text_field :name
+  = f.text_area  :description
+  = f.file_field :image
+
+  -# nested start
+  .nested_container#nested_container_company
+    .btn.btn-success.nested_button#nested_button_add_company +
+    .btn.btn-warning.nested_button#nested_button_edit_company #
+    = f.submit 'x', class: "btn btn-danger nested_button", id: 'nested_button_destroy_company', data: {confirm: t('buttons.confirm.company')}
+    = f.collection_select(:company_id, Company.all, :id, :name)
+    #nested_form_company
+      =render "nested_company_form", f: f
+  -# nested finish
+
+  = f.text_field :price
+
+  -# nested start
+  .nested_container#nested_container_chipset
+    .btn.btn-success.nested_button#nested_button_add_chipset +
+    .btn.btn-warning.nested_button#nested_button_edit_chipset #
+    = f.submit 'x', class: "btn btn-danger nested_button", id: 'nested_button_destroy_chipset', data: {confirm: t('buttons.confirm.chipset')}
+    = f.collection_select(:chipset_id, Chipset.all, :id, :name)
+    #nested_form_chipset
+      =render "nested_chipset_form", f: f
+  -# nested finish
+
+  = f.number_field :pci_e_x16_num
+  = f.select(:sli_crossfire, options_for_select(["SLI", "CrossFire", "SLI/CrossFire", "Нет"]))
+  = f.number_field :ram_num
+
+  -# nested start
+  - ram_selector=RamType.all.map{ |ram_type| [ram_type.id, ram_type.name+="-"<<ram_type.speed.to_s]}
+  .nested_container#nested_container_ram_type
+    .btn.btn-success.nested_button#nested_button_add_ram_type +
+    .btn.btn-warning.nested_button#nested_button_edit_ram_type #
+    = f.submit 'x', class: "btn btn-danger nested_button", id: 'nested_button_destroy_ram_type', data: {confirm: t('buttons.confirm.ram_type')}
+    = f.collection_select(:ram_type_id, ram_selector, :first, :second)
+    #nested_form_ram_type
+      =render "nested_ram_type_form", f: f
+  -# nested finish
+
+  = f.select(:bios, options_for_select(["AMI", "Award", "Phoenix"]))
+  = f.select(:audio, options_for_select(["7.1, HDA", "5.1, AC97"]))
+  = f.select(:form_factor, options_for_select(["ATX", "mATX", "EATX", "mITX"]))
+  = f.submit t('buttons.create'), class: "btn btn-success"

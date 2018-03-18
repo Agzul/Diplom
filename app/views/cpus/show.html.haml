@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @cpu.name
+%p
+  %b Description:
+  = @cpu.description
+%p
+  %b Image:
+  = @cpu.image
+%p
+  %b Company:
+  = @cpu.company
+%p
+  %b Price:
+  = @cpu.price
+%p
+  %b Cpu socket:
+  = @cpu.cpu_socket
+%p
+  %b Core:
+  = @cpu.core
+%p
+  %b Core num:
+  = @cpu.core_num
+%p
+  %b Core speed:
+  = @cpu.core_speed
+%p
+  %b overclocking:
+  = @cpu.overclocking
+%p
+  %b Video core:
+  = @cpu.video_core
+%p
+  %b Tdp:
+  = @cpu.tdp
+%p
+  %b Game benchmark:
+  = @cpu.game_benchmark
+
+= link_to 'Редактировать', edit_cpu_path(@cpu)
+\|
+= link_to 'Назад', cpus_path

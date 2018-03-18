@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @power_supply.name
+%p
+  %b Description:
+  = @power_supply.description
+%p
+  %b Image:
+  = @power_supply.image
+%p
+  %b Company:
+  = @power_supply.company
+%p
+  %b Price:
+  = @power_supply.price
+%p
+  %b Power:
+  = @power_supply.power
+
+= link_to 'Edit', edit_power_supply_path(@power_supply)
+\|
+= link_to 'Back', power_supplies_path

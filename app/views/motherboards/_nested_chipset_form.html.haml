@@ -1,0 +1,6 @@
+= f.fields_for :chipset do |ff|
+  .col-md-6
+    = ff.text_field :name
+    = ff.collection_select(:cpu_socket_id, CpuSocket.all, :id, :name)
+    = ff.check_box :overclocking
+    = ff.text_field :_destroy, type: 'hidden'
