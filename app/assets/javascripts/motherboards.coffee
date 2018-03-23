@@ -1,5 +1,5 @@
 # nested_start
-@nested_buttons_chipset = (current_controller, current_action) ->
+@nested_buttons_chipset_motherboard = (current_controller, current_action) ->
   motherboard_chipset_id   = document.getElementById('motherboard_chipset_id')
   nested_container_chipset = document.getElementById('nested_container_chipset')
   nested_form_chipset      = document.getElementById('nested_form_chipset')
@@ -60,7 +60,7 @@
   $('#nested_button_destroy_chipset').click ->
     hidden_field_destroy.value=true
 
-@nested_buttons_ram_type = (current_controller, current_action) ->
+@nested_buttons_ram_type_motherboard = (current_controller, current_action) ->
 
   motherboard_ram_type_id=   document.getElementById('motherboard_ram_type_id')
   nested_container_ram_type= document.getElementById('nested_container_ram_type')
@@ -123,8 +123,8 @@
 
 all_ready = ->
   if @current_controller == "motherboards" && @current_action != "index" && @current_action != "show"
-    window.nested_buttons_chipset(@current_controller, @current_action)
-    window.nested_buttons_ram_type(@current_controller, @current_action)
+    window.nested_buttons_chipset_motherboard(@current_controller, @current_action)
+    window.nested_buttons_ram_type_motherboard(@current_controller, @current_action)
     window.nested_buttons_company(@current_controller, @current_action)
 $(document).on 'turbolinks:load', all_ready
 # nested_finish

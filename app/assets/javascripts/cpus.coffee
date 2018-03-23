@@ -1,5 +1,5 @@
 # nested_start
-@nested_buttons_cpu_socket = (current_controller, current_action) ->
+@nested_buttons_cpu_socket_cpu = (current_controller, current_action) ->
   cpu_cpu_socket_id           = document.getElementById('cpu_cpu_socket_id')
   nested_container_cpu_socket = document.getElementById('nested_container_cpu_socket')
   nested_form_cpu_socket      = document.getElementById('nested_form_cpu_socket')
@@ -60,7 +60,7 @@
   $('#nested_button_destroy_cpu_socket').click ->
     hidden_field_destroy.value=true
 
-@nested_buttons_video_core = (current_controller, current_action) ->
+@nested_buttons_video_core_cpu = (current_controller, current_action) ->
 
   cpu_video_core_id=   document.getElementById('cpu_video_core_id')
   nested_container_video_core= document.getElementById('nested_container_video_core')
@@ -123,8 +123,8 @@
 
 all_ready = ->
   if @current_controller == "cpus" && @current_action != "index" && @current_action != "show"
-    window.nested_buttons_cpu_socket(@current_controller, @current_action)
-    window.nested_buttons_video_core(@current_controller, @current_action)
+    window.nested_buttons_cpu_socket_cpu(@current_controller, @current_action)
+    window.nested_buttons_video_core_cpu(@current_controller, @current_action)
     window.nested_buttons_company(@current_controller, @current_action)
 $(document).on 'turbolinks:load', all_ready
 # nested_finish

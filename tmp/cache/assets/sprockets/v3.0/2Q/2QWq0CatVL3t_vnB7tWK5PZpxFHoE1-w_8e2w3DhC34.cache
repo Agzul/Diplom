@@ -1,0 +1,84 @@
+I"Î(function() {
+  var all_ready;
+
+  this.nested_buttons_chipset = function(current_controller, current_action) {
+    var hidden_field_chipset_id, hidden_field_chipset_id_saved, hidden_field_destroy, hidden_field_label, i, motherboard_chipset_id, nested_container_chipset, nested_form_chipset;
+    motherboard_chipset_id = document.getElementById('motherboard_chipset_id');
+    nested_container_chipset = document.getElementById('nested_container_chipset');
+    nested_form_chipset = document.getElementById('nested_form_chipset');
+    nested_form_chipset.remove();
+    hidden_field_chipset_id = nested_form_chipset.lastElementChild;
+    hidden_field_chipset_id_saved = hidden_field_chipset_id.value;
+    hidden_field_label = nested_form_chipset.childNodes[1].childNodes[7].firstElementChild.remove();
+    hidden_field_destroy = nested_form_chipset.childNodes[1].childNodes[7].lastElementChild;
+    if (current_action === "new" || current_action === "create") {
+      $('#nested_button_edit_chipset').css('display', 'none');
+    }
+    $('#nested_button_destroy_chipset').css('display', 'none');
+    i = 0;
+    $('#nested_button_add_chipset').click(function() {
+      if (i % 2 === 0) {
+        if (hidden_field_chipset_id.value !== '') {
+          hidden_field_chipset_id.value = '';
+        }
+        motherboard_chipset_id.remove();
+        nested_container_chipset.childNodes[7].append(nested_form_chipset);
+        $('#nested_button_add_chipset').html('-');
+        $('#nested_container_chipset').css('background', '#28a745');
+        $('#nested_button_add_chipset').css('background', '#070');
+      } else {
+        if ($('#nested_button_edit_chipset').html('-')) {
+          $('#nested_button_edit_chipset').html('#');
+          $('#nested_button_edit_chipset').css('background', '#ffc107');
+          $('#nested_button_destroy_chipset').css('display', 'none');
+        }
+        nested_form_chipset.remove();
+        nested_container_chipset.childNodes[7].append(motherboard_chipset_id);
+        $('#nested_button_add_chipset').html('+');
+        $('#nested_container_chipset').css('background', '#ddd');
+        $('#nested_button_add_chipset').css('background', '#28a745');
+      }
+      return i += 1;
+    });
+    $('#nested_button_edit_chipset').click(function() {
+      if (i % 2 === 0) {
+        if (hidden_field_chipset_id.value === '') {
+          hidden_field_chipset_id.value = hidden_field_chipset_id_saved;
+        }
+        motherboard_chipset_id.remove();
+        nested_container_chipset.childNodes[7].append(nested_form_chipset);
+        $('#nested_button_destroy_chipset').css('display', 'inline-block');
+        $('#nested_button_edit_chipset').html('-');
+        $('#nested_container_chipset').css('background', '#ffc107');
+        $('#nested_button_edit_chipset').css('background', '#dda107');
+      } else {
+        if ($('#nested_button_add_chipset').html('-')) {
+          $('#nested_button_add_chipset').html('+');
+          $('#nested_button_add_chipset').css('background', '#28a745');
+        }
+        nested_form_chipset.remove();
+        nested_container_chipset.childNodes[7].append(motherboard_chipset_id);
+        $('#nested_button_destroy_chipset').css('display', 'none');
+        $('#nested_button_edit_chipset').html('#');
+        $('#nested_container_chipset').css('background', '#ddd');
+        $('#nested_button_edit_chipset').css('background', '#ffc107');
+      }
+      return i += 1;
+    });
+    return $('#nested_button_destroy_chipset').click(function() {
+      return hidden_field_destroy.value = true;
+    });
+  };
+
+  all_ready = function() {
+    if (this.current_controller === "motherboards" && this.current_action !== "index" && this.current_action !== "show") {
+      window.nested_buttons_chipset(this.current_controller, this.current_action);
+      window.nested_buttons_ram_type(this.current_controller, this.current_action);
+      return window.nested_buttons_company(this.current_controller, this.current_action);
+    }
+  };
+
+  $(document).on('turbolinks:load', all_ready);
+
+}).call(this);
+:ET

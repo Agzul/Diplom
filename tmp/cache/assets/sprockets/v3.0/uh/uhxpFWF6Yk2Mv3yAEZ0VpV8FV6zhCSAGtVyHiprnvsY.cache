@@ -1,0 +1,19 @@
+I"¨(function() {
+  var all_ready;
+
+  this.nested_buttons_chipset = function(current_controller, current_action) {};
+
+  this.nested_buttons_ram_type = function(current_controller, current_action) {};
+
+  all_ready = function() {
+    if (this.current_controller === "motherboards" && this.current_action !== "index" && this.current_action !== "show") {
+      window.nested_buttons_chipset(this.current_controller, this.current_action);
+      window.nested_buttons_ram_type(this.current_controller, this.current_action);
+      return window.nested_buttons_company(this.current_controller, this.current_action);
+    }
+  };
+
+  $(document).on('turbolinks:load', all_ready);
+
+}).call(this);
+:ET

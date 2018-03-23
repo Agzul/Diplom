@@ -1,4 +1,4 @@
-@nested_buttons_ram_type = (current_controller, current_action) ->
+@nested_buttons_ram_type_ram = (current_controller, current_action) ->
   ram_ram_type_id           = document.getElementById('ram_ram_type_id')
   nested_container_ram_type = document.getElementById('nested_container_ram_type')
   nested_form_ram_type      = document.getElementById('nested_form_ram_type')
@@ -61,6 +61,6 @@
 
 all_ready = ->
   if @current_controller == "rams" && @current_action != "index" && @current_action != "show"
-    window.nested_buttons_ram_type(@current_controller, @current_action)
+    window.nested_buttons_ram_type_ram(@current_controller, @current_action)
     window.nested_buttons_company(@current_controller, @current_action)
 $(document).on 'turbolinks:load', all_ready
