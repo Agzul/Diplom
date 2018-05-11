@@ -1,5 +1,6 @@
 class HddsController < ApplicationController
   before_action :set_hdd, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
 
   # GET /hdds
   # GET /hdds.json

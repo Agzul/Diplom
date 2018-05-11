@@ -1,5 +1,6 @@
 class VideoCardsController < ApplicationController
   before_action :set_video_card, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
 
   # GET /video_cards
   # GET /video_cards.json

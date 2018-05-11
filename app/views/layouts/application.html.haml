@@ -10,12 +10,17 @@
     %meta{name: "viewport", content: "width=device-width; initial-scale=1.0"}
     %meta{charset: "utf-8"}
   %body{class: "#{controller_name} #{action_name}"}
+    %div
+      %p#notice= flash[:notice]
+      %p#alert= flash[:alert]
+
     .wrapper.container
       %header
         %nav
           = render "layouts/nav"
       .row
-        %section
-          = yield
+        .custom_row
+          %section
+            = yield
     %footer.footer
       = render "layouts/footer"

@@ -42,6 +42,7 @@ gem 'jquery-rails'       # Расширение js
 gem 'popper_js'          # Всплывающие подсказки
 gem "autoprefixer-rails" # Автопрефикс для старых браузеров
 gem "font-awesome-rails" # Иконки
+gem 'sorcery'            # Регистрация / Авторизация
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

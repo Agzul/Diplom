@@ -1,5 +1,6 @@
 class CpusController < ApplicationController
   before_action :set_cpu, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
 
   # GET /cpus
   # GET /cpus.json

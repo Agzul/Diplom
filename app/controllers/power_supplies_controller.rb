@@ -1,5 +1,6 @@
 class PowerSuppliesController < ApplicationController
   before_action :set_power_supply, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
 
   # GET /power_supplies
   # GET /power_supplies.json

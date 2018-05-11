@@ -1,5 +1,6 @@
 class MotherboardsController < ApplicationController
   before_action :set_motherboard, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
 
   # GET /motherboards
   # GET /motherboards.json

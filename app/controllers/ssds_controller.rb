@@ -1,5 +1,6 @@
 class SsdsController < ApplicationController
   before_action :set_ssd, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
 
   # GET /ssds
   # GET /ssds.json

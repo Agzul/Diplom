@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'user_sessions/new'
+  get 'user_sessions/create'
+  get 'user_sessions/destroy'
+
+  resources :user_sessions
+  resources :users
+
+  get 'login' => 'user_sessions#new', :as => :login
+  delete 'logout' => 'user_sessions#destroy', :as => :logout
+
   root 'static_pages#home'
   match '/about', to: 'static_pages#about', via: 'get'
 

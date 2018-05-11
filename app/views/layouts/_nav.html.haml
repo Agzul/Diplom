@@ -3,12 +3,28 @@
     %img=image_tag("logo.png", size: '80x30', alt: "nav logo")
   %ul.navbar-nav.mr-auto
     %li.nav-item.dropdown
-      %a#navbarDropdown.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Комплектующие ПК
+      %a#navbarDropdown.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Комплектующие
       .dropdown-menu.bg-dark
-        %a.dropdown-item.bg-dark.text-light{:href => "/motherboards"} Материнские платы
-        %a.dropdown-item.bg-dark.text-light{:href => "/cpus"} Процессоры
-        %a.dropdown-item.bg-dark.text-light{:href => "/video_cards"} Видеокарты
-        %a.dropdown-item.bg-dark.text-light{:href => "/rams"} ОЗУ
-        %a.dropdown-item.bg-dark.text-light{:href => "/hdds"} Жесткие диски
-        %a.dropdown-item.bg-dark.text-light{:href => "/ssds"} SSD
-        %a.dropdown-item.bg-dark.text-light{:href => "/power_supplies"} Блоки питания
+        %a.dropdown-item.bg-dark.text-light{href: "/motherboards"} Материнские платы
+        %a.dropdown-item.bg-dark.text-light{href: "/cpus"} Процессоры
+        %a.dropdown-item.bg-dark.text-light{href: "/video_cards"} Видеокарты
+        %a.dropdown-item.bg-dark.text-light{href: "/rams"} ОЗУ
+        %a.dropdown-item.bg-dark.text-light{href: "/hdds"} Жесткие диски
+        %a.dropdown-item.bg-dark.text-light{href: "/ssds"} SSD
+        %a.dropdown-item.bg-dark.text-light{href: "/power_supplies"} Блоки питания
+  - if current_user
+    %ul.navbar-nav
+      %li.nav-item.dropdown
+        %a#navbarDropdown.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Сборки
+        .dropdown-menu.bg-dark
+          %a.dropdown-item.bg-dark.text-light{href: "#"} Просмотр
+          %a.dropdown-item.bg-dark.text-light{href: "#"} Создание
+    %ul.navbar-nav.navbar-right
+      %li.nav-item
+        %a.nav-link{href: edit_user_path(current_user.id)} Редактирование профиля
+        = link_to 'Log out', logout_path, method: :delete
+  - else
+    %ul.navbar-nav.navbar-right
+      %li.nav-item
+        %a.nav-link{href: new_user_path} Регистрация
+        %a.nav-link{href: "/login"} Вход
