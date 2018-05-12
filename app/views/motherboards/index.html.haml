@@ -26,9 +26,11 @@
         %td.right
           = link_to motherboard, class: 'btn btn-info' do
             = fa_icon :eye
-          .row
-          = link_to edit_motherboard_path(motherboard), class: 'btn btn-warning' do
-            = fa_icon :edit
-          .row
-          = link_to motherboard, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.motherboard') } do
-            = fa_icon :times
+          - if is_operator?(@current_role)
+            .row
+            = link_to edit_motherboard_path(motherboard), class: 'btn btn-warning' do
+              = fa_icon :edit
+          - if is_admin?(@current_role)
+            .row
+            = link_to motherboard, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.motherboard') } do
+              = fa_icon :times

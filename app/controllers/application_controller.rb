@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :require_login
+  before_action :current_role_global
+
+  def current_role_global
+    return @current_role = -1 if current_user.nil?
+    return @current_role = -1 if current_user.role.nil?
+    return @current_role = current_user.role.name
+  end
 
   private
   def not_authenticated
