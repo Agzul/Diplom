@@ -1,3 +1,11 @@
+# Admin
+Role_Admin = Role.create(name: "admin")
+User_Admin = User.create(
+  email: "admin@gpc.ru",
+  password: "admingpc",
+  password_confirmation: "admingpc",
+  role: Role_Admin
+)
 # Video cores
 VideoCore_NO=              VideoCore.create(name: 'Нет') # Need to FIX
 VideoCore_HD_8470D=        VideoCore.create(name: 'HD 8470D',         speed: 800,  game_benchmark: 510)

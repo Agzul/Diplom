@@ -22,7 +22,8 @@
     %ul.navbar-nav.navbar-right
       %li.nav-item
         %a.nav-link{href: edit_user_path(current_user.id)} Редактирование профиля
-        = link_to 'Log out', logout_path, method: :delete
+        %a.nav-link
+          = link_to 'Выход', logout_path, method: :delete
   - else
     %ul.navbar-nav.navbar-right
       %li.nav-item

@@ -1,6 +1,8 @@
 class RamsController < ApplicationController
   before_action :set_ram, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :show]
+  before_action :deny_access_no_role, only: [:edit, :update, :destroy]
+  before_action :deny_access_operator, only: [:destroy]
 
   # GET /rams
   # GET /rams.json

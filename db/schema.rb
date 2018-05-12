@@ -142,6 +142,12 @@ ActiveRecord::Schema.define(version: 20180511152051) do
     t.index ["ram_type_id"], name: "index_rams_on_ram_type_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ssds", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -164,9 +170,11 @@ ActiveRecord::Schema.define(version: 20180511152051) do
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
+    t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   create_table "video_cards", force: :cascade do |t|
@@ -208,5 +216,6 @@ ActiveRecord::Schema.define(version: 20180511152051) do
   add_foreign_key "rams", "companies"
   add_foreign_key "rams", "ram_types"
   add_foreign_key "ssds", "companies"
+  add_foreign_key "users", "roles"
   add_foreign_key "video_cards", "companies"
 end

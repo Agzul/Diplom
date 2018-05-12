@@ -1,6 +1,8 @@
 ru:
   buttons:
     create: Создать
+    login: Войти
+    register: Зарегистрироваться
     confirm:
       motherboard:  Действительно удалить материнскую плату?
       ssd:          Действительно удалить SSD?
@@ -24,6 +26,7 @@ ru:
       power_supply: Новый блок питания
   activerecord:
     models:
+      user:         Пользователь
       motherboard:  Материнская плата
       ssd:          SSD
       hdd:          Жесткий диск
@@ -34,6 +37,7 @@ ru:
       cpu_socket:   Socket
       video_core:   Видеоядро
 
+      users:          Пользователи
       motherboards:   Материнские платы
       ssds:           SSD's
       hdds:           Жесткие диски
@@ -45,6 +49,10 @@ ru:
       video_cores:    Видеоядра
 
     attributes:
+      user:
+        email: Почта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
       motherboard:
         name:          Название
         description:   Описание
