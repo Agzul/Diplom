@@ -1,9 +1,17 @@
 # Admin
 Role_Admin = Role.create(name: "admin")
+Image_User_Admin=File.open(File.join(Rails.root, '/app/assets/images/users/admin_logo.jpg'))
 User_Admin = User.create(
+  login: "admin",
   email: "admin@gpc.ru",
   password: "admingpc",
   password_confirmation: "admingpc",
+  fn: "Amayak",
+  ln: "Osipov",
+  sn: "Georgievich",
+  birthday: "1996.04.07",
+  gender: "М",
+  image: Image_User_Admin,
   role: Role_Admin
 )
 # Video cores

@@ -167,13 +167,24 @@ ActiveRecord::Schema.define(version: 20180511152051) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "login"
     t.string "email", null: false
     t.string "crypted_password"
+    t.string "fn"
+    t.string "ln"
+    t.string "sn"
+    t.date "birthday"
+    t.string "gender"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.string "salt"
     t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["login"], name: "index_users_on_login", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 

@@ -19,13 +19,19 @@
         .dropdown-menu.bg-dark
           %a.dropdown-item.bg-dark.text-light{href: "#"} Просмотр
           %a.dropdown-item.bg-dark.text-light{href: "#"} Создание
-    %ul.navbar-nav.navbar-right
-      %li.nav-item
-        %a.nav-link{href: edit_user_path(current_user.id)} Редактирование профиля
-        %a.nav-link
-          = link_to 'Выход', logout_path, method: :delete
+    %a.navbar-brand
+      %img= image_tag(current_user.image.url(:thumb)) if current_user.image.exists?
+    %ul.navbar-nav
+      %li.nav-item.dropdown
+        %a#navbarDropdown.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => ""} #{current_user.fn}
+        .dropdown-menu.bg-dark
+          %a.dropdown-item.bg-dark.text-light{href: edit_user_path(current_user.id)} Редактировать
+          %a.dropdown-item.bg-dark.text-light
+            = link_to 'Выход', logout_path, method: :delete
   - else
-    %ul.navbar-nav.navbar-right
+    %ul.navbar-nav
       %li.nav-item
         %a.nav-link{href: new_user_path} Регистрация
+    %ul.navbar-nav
+      %li.nav-item
         %a.nav-link{href: "/login"} Вход

@@ -1,14 +1,36 @@
 %p#notice= notice
 
 %p
-  %b Email:
-  = @user.email
+  %b Login:
+  = @user.login
 %p
   %b Crypted password:
   = @user.crypted_password
 %p
+  %b Email:
+  = @user.email
+%p
+  %b fn:
+  = @user.fn
+%p
+  %b ln:
+  = @user.ln
+%p
+  %b sn:
+  = @user.sn
+%p
+  %b birthday:
+  = @user.birthday
+%p
+  %b gender:
+  = @user.gender
+%p
+  %b Image:
+  = image_tag(@user.image.url(:thumb)) if @user.image.exists?
+%p
   %b Salt:
   = @user.salt
+
 
 = link_to 'Edit', edit_user_path(@user)
 \|

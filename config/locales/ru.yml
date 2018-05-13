@@ -50,9 +50,15 @@ ru:
 
     attributes:
       user:
+        login: Логин
         email: Почта
         password: Пароль
         password_confirmation: Подтверждение пароля
+        fn: Имя
+        ln: Фамилия
+        sn: Отчество
+        birthday: День рождения
+        gender: Пол
       motherboard:
         name:          Название
         description:   Описание

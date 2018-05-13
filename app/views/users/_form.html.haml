@@ -1,12 +1,16 @@
 = bootstrap_form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
+  = f.alert_message "Пожалуйста, исправьте ошибки ниже."
 
+  = f.text_field :login
   = f.text_field :email
   = f.password_field :password
   = f.password_field :password_confirmation
+  = f.text_field :fn
+  = f.text_field :ln
+  = f.text_field :sn
+  .form-group
+    %label.control-label{:for => "user_birthday"} День рождения
+    %input#user_birthday.form-control{name: "user[birthday]", :type => "date"}
+  = f.select(:gender, options_for_select(["М", "Ж"]))
+  = f.file_field :image
   = f.submit t('buttons.register'), class: "btn btn-success"
