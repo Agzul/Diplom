@@ -16,6 +16,7 @@ ru:
       company:      Действительно удалить компанию? Это так же удалит все товары данной компании!
       cpu_socket:   Действительно удалить socket? Это так же удалит все комплектующие с данным socket'ом!
       video_core:   Действительно удалить видеоядро? Это так же удалит все комплектующие с данным видеоядром!
+      assembly:     Действительно удалить сборку?
     new:
       motherboard:  Новая материнская плата
       ssd:          Новый SSD
@@ -24,6 +25,7 @@ ru:
       cpu:          Новый процессор
       video_card:   Новая видеокарта
       power_supply: Новый блок питания
+      assembly:     Новая сборка
   activerecord:
     models:
       user:         Пользователь
@@ -36,6 +38,7 @@ ru:
       power_supply: Блок питания
       cpu_socket:   Socket
       video_core:   Видеоядро
+      assembly:     Сборка
 
       users:          Пользователи
       motherboards:   Материнские платы
@@ -47,6 +50,7 @@ ru:
       power_supplies: Блоки питания
       cpu_sockets:    Socket'ы
       video_cores:    Видеоядра
+      assemblies:     Сборки
 
     attributes:
       user:
@@ -152,3 +156,22 @@ ru:
         name:           Название
         speed:          Скорость
         game_benchmark: Игровой тест производительности
+      assembly:
+        name:         Название
+        description:  Описание
+        finanse:      Бюджет
+        motherboard:  Материнская плата
+        cpu:          Процессор
+        ram:          Оперативная память
+        video_card:   Видеокарта
+        ssd:          SSD
+        hdd:          HDD
+        power_supply: Блок питания
+
+        motherboard_id:  Материнская плата
+        cpu_id:          Процессор
+        ram_id:          Оперативная память
+        video_card_id:   Видеокарта
+        ssd_id:          SSD
+        hdd_id:          HDD
+        power_supply_id: Блок питания

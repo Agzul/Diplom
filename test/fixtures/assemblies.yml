@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  finanse: 1.5
+  motherboard: one
+  cpu: one
+  ram: one
+  video_card: one
+  ssd: one
+  hdd: one
+  power_supply: one
+  video_card_num: 1
+  hdd_num: 1
+  ssd_num: 1
+  ram_num: 1
+  user: one
+
+two:
+  name: MyString
+  description: MyText
+  finanse: 1.5
+  motherboard: two
+  cpu: two
+  ram: two
+  video_card: two
+  ssd: two
+  hdd: two
+  power_supply: two
+  video_card_num: 1
+  hdd_num: 1
+  ssd_num: 1
+  ram_num: 1
+  user: two

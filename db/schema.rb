@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511152051) do
+ActiveRecord::Schema.define(version: 20180514183303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assemblies", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.float "finanse"
+    t.bigint "motherboard_id"
+    t.bigint "cpu_id"
+    t.bigint "ram_id"
+    t.bigint "video_card_id"
+    t.bigint "ssd_id"
+    t.bigint "hdd_id"
+    t.bigint "power_supply_id"
+    t.integer "video_card_num"
+    t.integer "hdd_num"
+    t.integer "ssd_num"
+    t.integer "ram_num"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cpu_id"], name: "index_assemblies_on_cpu_id"
+    t.index ["hdd_id"], name: "index_assemblies_on_hdd_id"
+    t.index ["motherboard_id"], name: "index_assemblies_on_motherboard_id"
+    t.index ["power_supply_id"], name: "index_assemblies_on_power_supply_id"
+    t.index ["ram_id"], name: "index_assemblies_on_ram_id"
+    t.index ["ssd_id"], name: "index_assemblies_on_ssd_id"
+    t.index ["user_id"], name: "index_assemblies_on_user_id"
+    t.index ["video_card_id"], name: "index_assemblies_on_video_card_id"
+  end
 
   create_table "chipsets", force: :cascade do |t|
     t.string "name"
@@ -215,6 +243,14 @@ ActiveRecord::Schema.define(version: 20180511152051) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "assemblies", "cpus"
+  add_foreign_key "assemblies", "hdds"
+  add_foreign_key "assemblies", "motherboards"
+  add_foreign_key "assemblies", "power_supplies"
+  add_foreign_key "assemblies", "rams"
+  add_foreign_key "assemblies", "ssds"
+  add_foreign_key "assemblies", "users"
+  add_foreign_key "assemblies", "video_cards"
   add_foreign_key "chipsets", "cpu_sockets"
   add_foreign_key "cpus", "companies"
   add_foreign_key "cpus", "cpu_sockets"

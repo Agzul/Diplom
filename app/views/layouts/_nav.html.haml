@@ -17,8 +17,8 @@
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Сборки
         .dropdown-menu.bg-dark
-          %a.dropdown-item.bg-dark.text-light{href: "#"} Просмотр
-          %a.dropdown-item.bg-dark.text-light{href: "#"} Создание
+          %a.dropdown-item.bg-dark.text-light{href: assemblies_path} Просмотр
+          %a.dropdown-item.bg-dark.text-light{href: new_assembly_path} Создание
     %a.navbar-brand
       %img= image_tag(current_user.image.url(:thumb)) if current_user.image.exists?
     %ul.navbar-nav

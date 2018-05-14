@@ -1,0 +1,51 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @assembly.name
+%p
+  %b Description:
+  = @assembly.description
+%p
+  %b Finanse:
+  = @assembly.finanse
+%p
+  %b Motherboard:
+  = @assembly.motherboard
+%p
+  %b Cpu:
+  = @assembly.cpu
+%p
+  %b Ram:
+  = @assembly.ram
+%p
+  %b Video card:
+  = @assembly.video_card
+%p
+  %b Ssd:
+  = @assembly.ssd
+%p
+  %b Hdd:
+  = @assembly.hdd
+%p
+  %b Power supply:
+  = @assembly.power_supply
+%p
+  %b Video card num:
+  = @assembly.video_card_num
+%p
+  %b Hdd num:
+  = @assembly.hdd_num
+%p
+  %b Ssd num:
+  = @assembly.ssd_num
+%p
+  %b Ram num:
+  = @assembly.ram_num
+%p
+  %b User:
+  = @assembly.user
+
+= link_to 'Edit', edit_assembly_path(@assembly)
+\|
+= link_to 'Back', assemblies_path
