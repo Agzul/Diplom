@@ -1,0 +1,23 @@
+I"8(function() {
+  var all_ready;
+
+  this.display_parts_num = function() {
+    var i, j, ref, results;
+    results = [];
+    for (i = j = 0, ref = $(".ram_num").length; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
+      ram_num[i] = $(".ram_num")[i];
+      results.push(console.log(ram_num));
+    }
+    return results;
+  };
+
+  all_ready = function() {
+    if (this.current_controller === "assemblies" && this.current_action === "index") {
+      return window.display_parts_num();
+    }
+  };
+
+  $(document).on('turbolinks:load', all_ready);
+
+}).call(this);
+:ET

@@ -1,0 +1,42 @@
+I"Ò(function() {
+  var all_ready;
+
+  this.display_parts_num = function() {
+    var hdd_num, i, j, k, l, m, n, ram_num, ref, ref1, ref2, ref3, ref4, results, ssd_num, video_card_num;
+    ram_num = [];
+    for (i = j = 0, ref = $(".ram_num").length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+      ram_num[i] = $(".ram_num")[i].innerHTML;
+    }
+    console.log(ram_num);
+    video_card_num = [];
+    for (i = k = 0, ref1 = $(".video_card_num").length; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
+      video_card_num[i] = $(".video_card_num")[i].innerHTML;
+    }
+    console.log(video_card_num);
+    ssd_num = [];
+    for (i = l = 0, ref2 = $(".ssd_num").length; 0 <= ref2 ? l < ref2 : l > ref2; i = 0 <= ref2 ? ++l : --l) {
+      ssd_num[i] = $(".ssd_num")[i].innerHTML;
+    }
+    console.log(ssd_num);
+    hdd_num = [];
+    for (i = m = 0, ref3 = $(".hdd_num").length; 0 <= ref3 ? m < ref3 : m > ref3; i = 0 <= ref3 ? ++m : --m) {
+      hdd_num[i] = $(".hdd_num")[i].innerHTML;
+    }
+    console.log(hdd_num);
+    results = [];
+    for (i = n = 1, ref4 = $("part_num").length; 1 <= ref4 ? n <= ref4 : n >= ref4; i = 1 <= ref4 ? ++n : --n) {
+      results.push(console.log($("part_num").length));
+    }
+    return results;
+  };
+
+  all_ready = function() {
+    if (this.current_controller === "assemblies" && this.current_action === "index") {
+      return window.display_parts_num();
+    }
+  };
+
+  $(document).on('turbolinks:load', all_ready);
+
+}).call(this);
+:ET

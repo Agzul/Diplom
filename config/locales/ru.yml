@@ -157,16 +157,20 @@ ru:
         speed:          Скорость
         game_benchmark: Игровой тест производительности
       assembly:
-        name:         Название
-        description:  Описание
-        finanse:      Бюджет
-        motherboard:  Материнская плата
-        cpu:          Процессор
-        ram:          Оперативная память
-        video_card:   Видеокарта
-        ssd:          SSD
-        hdd:          HDD
-        power_supply: Блок питания
+        name:           Название
+        description:    Описание
+        finanse:        Бюджет
+        motherboard:    Материнская плата
+        cpu:            Процессор
+        ram:            Оперативная память
+        video_card:     Видеокарта
+        ssd:            SSD
+        hdd:            HDD
+        power_supply:   Блок питания
+        ram_num:        Количество оперативной памяти
+        video_card_num: Количество видеокарт
+        ssd_num:        Количество ssd
+        hdd_num:        Количество жестких дисков
 
         motherboard_id:  Материнская плата
         cpu_id:          Процессор

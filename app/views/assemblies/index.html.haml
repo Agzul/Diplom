@@ -4,14 +4,26 @@
   = t('buttons.new.assembly')
 %table.table.table-responsive
   - @assemblies.each do |assembly|
+    .ram_num.d-none=        assembly.ram_num
+    .video_card_num.d-none= assembly.video_card_num
+    .ssd_num.d-none=        assembly.ssd_num
+    .hdd_num.d-none=        assembly.hdd_num
     %thead
       %tr.center.hidden-xss
         %th= t('activerecord.attributes.assembly.motherboard')
         %th= t('activerecord.attributes.assembly.cpu')
-        %th= t('activerecord.attributes.assembly.ram')
-        %th= t('activerecord.attributes.assembly.video_card')
-        %th= t('activerecord.attributes.assembly.ssd')
-        %th= t('activerecord.attributes.assembly.hdd')
+        %th
+          = t('activerecord.attributes.assembly.ram')
+          .part_num
+        %th
+          = t('activerecord.attributes.assembly.video_card')
+          .part_num
+        %th
+          = t('activerecord.attributes.assembly.ssd')
+          .part_num
+        %th
+          = t('activerecord.attributes.assembly.hdd')
+          .part_num
         %th= t('activerecord.attributes.assembly.power_supply')
         %th
     %tbody
@@ -23,20 +35,12 @@
         %td= link_to image_tag(assembly.ssd.image.url(:thumb)), ssd_path(assembly.ssd) unless assembly.ssd.nil?
         %td= link_to image_tag(assembly.hdd.image.url(:thumb)), hdd_path(assembly.hdd) unless assembly.hdd.nil?
         %td= link_to image_tag(assembly.power_supply.image.url(:thumb)), power_supply_path(assembly.power_supply) unless assembly.power_supply.nil?
-        -# %td.inline-block-xss= motherboard.name
-        -# %td.inline-block-xss= motherboard.chipset.cpu_socket.name unless motherboard.chipset.nil?
-        -# %td.inline-block-xss= motherboard.chipset.name unless motherboard.chipset.nil?
-        -# %td.inline-block-xss #{motherboard.ram_num} слота #{motherboard.ram_type.name}, #{motherboard.ram_type.speed}
-        -# %td.inline-block-xss= motherboard.sli_crossfire
-        -# %td.inline-block-xss #{motherboard.price}Р
         %td.right
           = link_to assembly, class: 'btn btn-info' do
             = fa_icon :eye
-          - if is_operator?(@current_role) || is_admin?(@current_role)
-            .row
-            = link_to edit_assembly_path(assembly), class: 'btn btn-warning' do
-              = fa_icon :edit
-          - if is_admin?(@current_role)
-            .row
-            = link_to assembly, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.assembly') } do
-              = fa_icon :times
+          .row
+          = link_to edit_assembly_path(assembly), class: 'btn btn-warning' do
+            = fa_icon :edit
+          .row
+          = link_to assembly, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.assembly') } do
+            = fa_icon :times
