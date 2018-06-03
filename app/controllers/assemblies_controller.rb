@@ -4,7 +4,11 @@ class AssembliesController < ApplicationController
   # GET /assemblies
   # GET /assemblies.json
   def index
-    @assemblies = Assembly.all
+    if user_priority == 1 || user_priority == 0
+      @assemblies = Assembly.all
+    else
+      @assemblies = Assembly.all.where(user_id: current_user.id)
+    end
   end
 
   # GET /assemblies/1
@@ -19,6 +23,7 @@ class AssembliesController < ApplicationController
 
   # GET /assemblies/1/edit
   def edit
+    redirect_to root_path unless user_priority == 0 || user_priority == 1 || @assembly.user_id == current_user.id
   end
 
   # POST /assemblies
@@ -40,25 +45,35 @@ class AssembliesController < ApplicationController
   # PATCH/PUT /assemblies/1
   # PATCH/PUT /assemblies/1.json
   def update
-    respond_to do |format|
-      if @assembly.update(assembly_params)
-        format.html { redirect_to @assembly, notice: 'Assembly was successfully updated.' }
-        format.json { render :show, status: :ok, location: @assembly }
-      else
-        format.html { render :edit }
-        format.json { render json: @assembly.errors, status: :unprocessable_entity }
+    if user_priority == 0 || user_priority == 1 || @assembly.user_id == current_user.id
+      respond_to do |format|
+        if @assembly.update(assembly_params)
+          format.html { redirect_to @assembly, notice: 'Assembly was successfully updated.' }
+          format.json { render :show, status: :ok, location: @assembly }
+        else
+          format.html { render :edit }
+          format.json { render json: @assembly.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 
   # DELETE /assemblies/1
   # DELETE /assemblies/1.json
   def destroy
-    @assembly.destroy
-    respond_to do |format|
-      format.html { redirect_to assemblies_url, notice: 'Assembly was successfully destroyed.' }
-      format.json { head :no_content }
+
+    if user_priority == 0 || @assembly.user_id == current_user.id
+      @assembly.destroy
+      respond_to do |format|
+        format.html { redirect_to assemblies_url, notice: 'Assembly was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to root_path
     end
+
   end
 
   private

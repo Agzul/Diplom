@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if user_priority == 1 || user_priority == 0
+      @users = User.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /users/1
@@ -22,6 +26,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    redirect_to root_path unless user_priority == 0 || user_priority == 1 || @user.id == current_user.id
   end
 
   # POST /users
@@ -43,24 +48,32 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Профиль обновлен.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if user_priority == 0 || user_priority == 1 || @user.id == current_user.id
+      respond_to do |format|
+        if @user.update(user_params)
+          format.html { redirect_to @user, notice: 'Профиль обновлен.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'Пользователь удален.' }
-      format.json { head :no_content }
+    if user_priority == 0 || @user.id == current_user.id
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'Пользователь удален.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to root_path
     end
   end
 

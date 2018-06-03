@@ -14,6 +14,18 @@ User_Admin = User.create(
   image: Image_User_Admin,
   role: Role_Admin
 )
+User_User = User.create(
+  login: "user",
+  email: "user@gpc.ru",
+  password: "usergpcc",
+  password_confirmation: "usergpcc",
+  fn: "Amayak",
+  ln: "Osipov",
+  sn: "Georgievich",
+  birthday: "1996.04.07",
+  gender: "М",
+  image: Image_User_Admin,
+)
 # Video cores
 VideoCore_NO=              VideoCore.create(name: 'Нет') # Need to FIX
 VideoCore_HD_8470D=        VideoCore.create(name: 'HD 8470D',         speed: 800,  game_benchmark: 510)
