@@ -1,0 +1,74 @@
+I"â	(function() {
+  var all_ready;
+
+  this.display_parts_num = function() {
+    var hdd_num, i, j, k, l, m, n, ram_num, ref, ref1, ref2, ref3, ref4, results, ssd_num, video_card_num;
+    ram_num = [];
+    for (i = j = 0, ref = $(".ram_num").length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+      ram_num[i] = $(".ram_num")[i].innerHTML;
+    }
+    video_card_num = [];
+    for (i = k = 0, ref1 = $(".video_card_num").length; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
+      video_card_num[i] = $(".video_card_num")[i].innerHTML;
+    }
+    ssd_num = [];
+    for (i = l = 0, ref2 = $(".ssd_num").length; 0 <= ref2 ? l < ref2 : l > ref2; i = 0 <= ref2 ? ++l : --l) {
+      ssd_num[i] = $(".ssd_num")[i].innerHTML;
+    }
+    hdd_num = [];
+    for (i = m = 0, ref3 = $(".hdd_num").length; 0 <= ref3 ? m < ref3 : m > ref3; i = 0 <= ref3 ? ++m : --m) {
+      hdd_num[i] = $(".hdd_num")[i].innerHTML;
+    }
+    results = [];
+    for (i = n = 0, ref4 = $(".part_num").length; 0 <= ref4 ? n < ref4 : n > ref4; i = 0 <= ref4 ? ++n : --n) {
+      if (i % 4 === 0) {
+        results.push($(".part_num")[i].innerHTML = ram_num[i / 4]);
+      } else if (i % 4 === 1) {
+        results.push($(".part_num")[i].innerHTML = video_card_num[(i - 1) / 4]);
+      } else if (i % 4 === 2) {
+        results.push($(".part_num")[i].innerHTML = ssd_num[(i - 2) / 4]);
+      } else if (i % 4 === 3) {
+        results.push($(".part_num")[i].innerHTML = hdd_num[(i - 3) / 4]);
+      } else {
+        results.push(void 0);
+      }
+    }
+    return results;
+  };
+
+  this.autocompare_btn = function() {
+    var i;
+    i = 0;
+    return $('#autocompare_btn').click(function() {
+      if (i % 2 === 0) {
+        $('#autocompare_form').css('display', 'block');
+        return i += 1;
+      } else {
+        $('#autocompare_form').css('display', 'none');
+        return i += 1;
+      }
+    });
+  };
+
+  this.autocompare_drop_all_btn = function() {
+    return $('#autocompare_drop_all').click(function() {
+      return $("option").each(function() {
+        return console.log(this);
+      });
+    });
+  };
+
+  all_ready = function() {
+    if (this.current_controller === "assemblies" && this.current_action === "index") {
+      window.display_parts_num();
+    }
+    if (this.current_controller === "assemblies" && (this.current_action === "edit" || this.current_action === "new")) {
+      window.autocompare_btn();
+      return window.autocompare_drop_all_btn();
+    }
+  };
+
+  $(document).on('turbolinks:load', all_ready);
+
+}).call(this);
+:ET

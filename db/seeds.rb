@@ -27,7 +27,7 @@ User_User = User.create(
   image: Image_User_Admin,
 )
 # Video cores
-VideoCore_NO=              VideoCore.create(name: 'Нет') # Need to FIX
+VideoCore_NO=              VideoCore.create(name: 'Нет',              speed: 0,    game_benchmark: 0) # Need to FIX
 VideoCore_HD_8470D=        VideoCore.create(name: 'HD 8470D',         speed: 800,  game_benchmark: 510)
 VideoCore_R5=              VideoCore.create(name: 'R5',               speed: 800,  game_benchmark: 500)
 VideoCore_R7=              VideoCore.create(name: 'R7',               speed: 757,  game_benchmark: 1340)
@@ -134,6 +134,7 @@ Chipset_AMD_890FX=Chipset.create(name: 'AMD 890FX', overclocking: true, cpu_sock
 Chipset_AMD_760G= Chipset.create(name: 'AMD 760G',  overclocking: true, cpu_socket: CpuSocket_AM3)
 Chipset_AMD_785G= Chipset.create(name: 'AMD 785G',  overclocking: true, cpu_socket: CpuSocket_AM3)
 
+Chipset_AMD_A88X= Chipset.create(name: 'AMD A88X',  overclocking: true, cpu_socket: CpuSocket_FM2plus)
 # Цены
 f=File.open(File.join(Rails.root, '/db/prices.txt'))
 prices=[]
@@ -444,7 +445,22 @@ Motherboard_ASUS_PRIME_X399_A=Motherboard.create(
   audio: '7.1, HDA',
   form_factor: 'EATX'
 )
-
+Image_GIGABYTE_GA_F2A88XM_DS2_3_0_3_1=File.open(File.join(Rails.root, '/app/assets/images/motherboards/Image_GIGABYTE_GA_F2A88XM_DS2_3_0_3_1.jpeg'))
+Motherboard_GIGABYTE_GA_F2A88XM_DS2_3_0_3_1=Motherboard.create(
+  name: 'GIGABYTE GA-F2A88XM-DS2 (rev. 3.0/3.1)',
+  description: '12 USB, из них 4 USB 3.0 (2 на задней панели), выход S/PDIF, 1xCOM, D-Sub, DVI, Ethernet, PS/2 (клавиатура), PS/2 (мышь)',
+  image: Image_GIGABYTE_GA_F2A88XM_DS2_3_0_3_1,
+  company: Company_GIGABYTE,
+  price: 3550,
+  chipset: Chipset_AMD_A88X,
+  pci_e_x16_num: 1,
+  sli_crossfire: 'Нет',
+  ram_num: 2,
+  ram_type: RamType_DDR3_2133,
+  bios: 'AMI',
+  audio: '7.1, HDA',
+  form_factor: 'mATX'
+)
 
 # Видеокарты
 Image_GIGABYTE_GeForce_GT_1030=File.open(File.join(Rails.root, '/app/assets/images/video_cards/GIGABYTE_GeForce_GT_1030.jpeg'))

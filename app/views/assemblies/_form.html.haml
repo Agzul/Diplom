@@ -1,35 +1,46 @@
 = bootstrap_form_for @assembly do |f|
   = f.alert_message "Пожалуйста, исправьте ошибки ниже."
-
-  = f.text_field :name
-  = f.text_area :description
-  = f.text_field :finanse
-  = f.collection_select(:motherboard_id, Motherboard.all, :id, :name, {:prompt => true})
-  = f.collection_select(:cpu_id, Cpu.all, :id, :name, {:prompt => true})
-  .select_with_num
-    = f.collection_select(:ram_id, Ram.all, :id, :name, {:prompt => true})
-    - if action_name=="new"
-      = f.number_field :ram_num, value: 1
-    - else
-      = f.number_field :ram_num
-  .select_with_num
-    = f.collection_select(:video_card_id, VideoCard.all, :id, :name, {:prompt => true})
-    - if action_name=="new"
-      = f.number_field :video_card_num, value: 1
-    - else
-      = f.number_field :video_card_num
-  .select_with_num
-    = f.collection_select(:ssd_id, Ssd.all, :id, :name, {:prompt => true})
-    - if action_name=="new"
-      = f.number_field :ssd_num, value: 1
-    - else
-      = f.number_field :ssd_num
-  .select_with_num
-    = f.collection_select(:hdd_id, Hdd.all, :id, :name, {:prompt => true})
-    - if action_name=="new"
-      = f.number_field :hdd_num, value: 1
-    - else
-      = f.number_field :hdd_num
-  = f.collection_select(:power_supply_id, PowerSupply.all, :id, :name, {:prompt => true})
-  %input#assembly_user_id.form-control{:name => "assembly[user_id]", :type => "text", value: current_user.id, type: "hidden"}
-  = f.submit t('buttons.create'), class: "btn btn-success"
+  .btn.btn-success#autocompare_btn
+    Автоподбор
+  - if action_name == "edit"
+    .btn.btn-warning#autocompare_drop_all
+      Сбросить
+  #autocompare_form
+    .alert.alert-secondary
+      Выберите ваш бюджет
+    = f.number_field :finanse
+    = f.submit "Создать", class: "btn btn-success", id: "create_assembly"
+    .alert.alert-secondary
+      Вы так же можете выбрать имеющиеся у вас детали:
+  .form_color
+    = f.text_field :name
+    = f.text_area :description
+    = f.collection_select(:motherboard_id, Motherboard.all, :id, :name, {:include_blank => "Нет"})
+    = f.collection_select(:cpu_id, Cpu.all, :id, :name, {:include_blank => "Нет"})
+    .select_with_num
+      = f.collection_select(:ram_id, Ram.all, :id, :name, {:include_blank => "Нет"})
+      - if action_name=="new"
+        = f.number_field :ram_num, value: 1
+      - else
+        = f.number_field :ram_num
+    .select_with_num
+      = f.collection_select(:video_card_id, VideoCard.all, :id, :name, {:include_blank => "Нет"})
+      - if action_name=="new"
+        = f.number_field :video_card_num, value: 1
+      - else
+        = f.number_field :video_card_num
+    .select_with_num
+      = f.collection_select(:ssd_id, Ssd.all, :id, :name, {:include_blank => "Нет"})
+      - if action_name=="new"
+        = f.number_field :ssd_num, value: 1
+      - else
+        = f.number_field :ssd_num
+    .select_with_num
+      = f.collection_select(:hdd_id, Hdd.all, :id, :name, {:include_blank => "Нет"})
+      - if action_name=="new"
+        = f.number_field :hdd_num, value: 1
+      - else
+        = f.number_field :hdd_num
+    = f.collection_select(:power_supply_id, PowerSupply.all, :id, :name, {:include_blank => "Нет"})
+    %input#assembly_user_id.form-control{:name => "assembly[user_id]", :type => "text", value: current_user.id, type: "hidden"}
+    = f.submit t('buttons.create'), class: "btn btn-success"

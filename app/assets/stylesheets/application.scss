@@ -58,9 +58,13 @@ body {
     width: 10%;
     display: inline-block;
     position: relative;
-    top: 29px;
+    // top: 29px;
     label{
       display: none;
     }
   }
+}
+#autocompare_form{
+  display: none;
+  background: #ddd
 }
