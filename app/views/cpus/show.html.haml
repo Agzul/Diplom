@@ -1,45 +1,49 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = @cpu.name
+  %b
+    Процессор
+    = @cpu.name
+    - if is_operator?(@current_role)
+      = link_to edit_cpu_path(@cpu), class: 'btn btn-warning' do
+        = fa_icon :edit
+    - if is_admin?(@current_role)
+      = link_to @cpu, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.cpu') } do
+        = fa_icon :times
 %p
-  %b Description:
-  = @cpu.description
-%p
-  %b Image:
-  = @cpu.image
-%p
-  %b Company:
-  = @cpu.company
-%p
-  %b Price:
-  = @cpu.price
-%p
-  %b Cpu socket:
-  = @cpu.cpu_socket
-%p
-  %b Core:
-  = @cpu.core
-%p
-  %b Core num:
-  = @cpu.core_num
-%p
-  %b Core speed:
-  = @cpu.core_speed
-%p
-  %b overclocking:
-  = @cpu.overclocking
-%p
-  %b Video core:
-  = @cpu.video_core
-%p
-  %b Tdp:
-  = @cpu.tdp
-%p
-  %b Game benchmark:
-  = @cpu.game_benchmark
-
-= link_to 'Редактировать', edit_cpu_path(@cpu)
-\|
-= link_to 'Назад', cpus_path
+  = image_tag(@cpu.image.url(:med), class: "left_img") if @cpu.image.exists?
+  %p
+    = @cpu.description
+  %p
+    %b Компания:
+    = @cpu.company.name
+  %p
+    %b Цена:
+    = @cpu.price
+  %p
+    %b Socket:
+    = @cpu.cpu_socket.name
+  %p
+    %b Ядро:
+    = @cpu.core
+  %p
+    %b Количество ядер:
+    = @cpu.core_num
+  %p
+    %b Частота процессора:
+    = @cpu.core_speed
+  %p
+    %b Разгоняема?:
+    - if @cpu.overclocking == false
+      Нет
+    - if @cpu.overclocking == true
+      Да
+  %p
+    %b Встроенное видеоядро:
+    = @cpu.video_core.name
+  %p
+    %b Тепловыделение:
+    #{@cpu.tdp} Вт
+  %p
+    %b Игровой тест производительности:
+    = @cpu.game_benchmark

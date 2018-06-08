@@ -1,36 +1,37 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = @hdd.name
+  %b
+    Жесткий диск
+    = @hdd.name
+    - if is_operator?(@current_role)
+      = link_to edit_hdd_path(@hdd), class: 'btn btn-warning' do
+        = fa_icon :edit
+    - if is_admin?(@current_role)
+      = link_to @hdd, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.hdd') } do
+        = fa_icon :times
 %p
-  %b Description:
-  = @hdd.description
-%p
-  %b Image:
-  = @hdd.image
-%p
-  %b Company:
-  = @hdd.company
-%p
-  %b Price:
-  = @hdd.price
-%p
-  %b Volume:
-  = @hdd.volume
-%p
-  %b Size:
-  = @hdd.size
-%p
-  %b Rotation speed:
-  = @hdd.rotation_speed
-%p
-  %b Write speed:
-  = @hdd.write_speed
-%p
-  %b Read speed:
-  = @hdd.read_speed
-
-= link_to 'Edit', edit_hdd_path(@hdd)
-\|
-= link_to 'Back', hdds_path
+  = image_tag(@hdd.image.url(:med), class: "left_img") if @hdd.image.exists?
+  %p
+    = @hdd.description
+  %p
+    %b Компания:
+    = @hdd.company.name
+  %p
+    %b Цена:
+    = @hdd.price
+  %p
+    %b Объем:
+    = @hdd.volume
+  %p
+    %b Размер:
+    = @hdd.size
+  %p
+    %b Скорость вращения:
+    = @hdd.rotation_speed
+  %p
+    %b Скорость записи:
+    #{@hdd.write_speed.to_i} Мб/с
+  %p
+    %b Скорость чтения:
+    #{@hdd.read_speed.to_i} Мб/с

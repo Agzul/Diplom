@@ -1,24 +1,25 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = @power_supply.name
+  %b
+    Блок питания
+    = @power_supply.name
+    - if is_operator?(@current_role)
+      = link_to edit_power_supply_path(@power_supply), class: 'btn btn-warning' do
+        = fa_icon :edit
+    - if is_admin?(@current_role)
+      = link_to @power_supply, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.power_supply') } do
+        = fa_icon :times
 %p
-  %b Description:
-  = @power_supply.description
-%p
-  %b Image:
-  = @power_supply.image
-%p
-  %b Company:
-  = @power_supply.company
-%p
-  %b Price:
-  = @power_supply.price
-%p
-  %b Power:
-  = @power_supply.power
-
-= link_to 'Edit', edit_power_supply_path(@power_supply)
-\|
-= link_to 'Back', power_supplies_path
+  = image_tag(@power_supply.image.url(:med), class: "left_img") if @power_supply.image.exists?
+  %p
+    = @power_supply.description
+  %p
+    %b Компания:
+    = @power_supply.company.name
+  %p
+    %b Цена:
+    = @power_supply.price
+  %p
+    %b Мощность:
+    = @power_supply.power

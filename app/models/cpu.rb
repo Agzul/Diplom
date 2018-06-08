@@ -6,10 +6,12 @@ class Cpu < ApplicationRecord
 
   has_attached_file    :image,
                                styles: {
-                                 thumb: [ "100x100", :jpeg ]
+                                 thumb: [ "100x100", :jpeg ],
+                                 med: ["300x300", :jpeg]
                                },
                                convert_options: {
-                                 thumb: "-quality 90 -strip"
+                                 thumb: "-quality 90 -strip",
+                                 med: "-quality 90 -strip"
                                }
   validates_attachment :image, content_type: { content_type: /\Aimage\/.*\z/,
                                                message: "имеет неверное расширение"

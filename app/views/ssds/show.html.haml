@@ -1,33 +1,34 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = @ssd.name
+  %b
+    SSD
+    = @ssd.name
+    - if is_operator?(@current_role)
+      = link_to edit_ssd_path(@ssd), class: 'btn btn-warning' do
+        = fa_icon :edit
+    - if is_admin?(@current_role)
+      = link_to @ssd, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.ssd') } do
+        = fa_icon :times
 %p
-  %b Description:
-  = @ssd.description
-%p
-  %b Image:
-  = @ssd.image
-%p
-  %b Company:
-  = @ssd.company
-%p
-  %b Price:
-  = @ssd.price
-%p
-  %b Volume:
-  = @ssd.volume
-%p
-  %b Size:
-  = @ssd.size
-%p
-  %b Write speed:
-  = @ssd.write_speed
-%p
-  %b Read speed:
-  = @ssd.read_speed
-
-= link_to 'Edit', edit_ssd_path(@ssd)
-\|
-= link_to 'Back', ssds_path
+  = image_tag(@ssd.image.url(:med), class: "left_img") if @ssd.image.exists?
+  %p
+    = @ssd.description
+  %p
+    %b Компания:
+    = @ssd.company.name
+  %p
+    %b Цена:
+    = @ssd.price
+  %p
+    %b Объем:
+    = @ssd.volume
+  %p
+    %b Размер:
+    = @ssd.size
+  %p
+    %b Скорость записи:
+    #{@ssd.write_speed.to_i} Мб/с
+  %p
+    %b Скорость чтения:
+    #{@ssd.read_speed.to_i} Мб/с

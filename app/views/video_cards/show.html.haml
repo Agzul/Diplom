@@ -1,36 +1,36 @@
 %p#notice= notice
-
 %p
-  %b Name:
-  = @video_card.name
+  %b
+    Видеокарта
+    = @video_card.name
+    - if is_operator?(@current_role)
+      = link_to edit_video_card_path(@video_card), class: 'btn btn-warning' do
+        = fa_icon :edit
+    - if is_admin?(@current_role)
+      = link_to @video_card, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.video_card') } do
+        = fa_icon :times
 %p
-  %b Description:
-  = @video_card.description
-%p
-  %b Image:
-  = @video_card.image
-%p
-  %b Company:
-  = @video_card.company
-%p
-  %b Price:
-  = @video_card.price
-%p
-  %b Speed:
-  = @video_card.speed
-%p
-  %b Volume:
-  = @video_card.volume
-%p
-  %b Type:
-  = @video_card.memory
-%p
-  %b Tdp:
-  = @video_card.tdp
-%p
-  %b Game benchmark:
-  = @video_card.game_benchmark
-
-= link_to 'Edit', edit_video_card_path(@video_card)
-\|
-= link_to 'Back', video_cards_path
+  = image_tag(@video_card.image.url(:med), class: "left_img") if @video_card.image.exists?
+  %p
+    = @video_card.description
+  %p
+    %b Компания:
+    = @video_card.company.name
+  %p
+    %b Цена:
+    = @video_card.price
+  %p
+    %b Скорость:
+    = @video_card.speed
+  %p
+    %b Объем видеопамяти:
+    = @video_card.volume
+  %p
+    %b Тип:
+    = @video_card.memory
+  %p
+    %b Тепловыделение:
+    = @video_card.tdp
+  %p
+    %b Игровой тест производительности:
+    = @video_card.game_benchmark

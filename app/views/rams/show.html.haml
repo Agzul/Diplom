@@ -1,27 +1,27 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = @ram.name
+  %b
+    = @ram.name
+    - if is_operator?(@current_role)
+      = link_to edit_ram_path(@ram), class: 'btn btn-warning' do
+        = fa_icon :edit
+    - if is_admin?(@current_role)
+      = link_to @ram, class: 'btn btn-danger', method: :delete, data: { confirm: t('buttons.confirm.ram') } do
+        = fa_icon :times
 %p
-  %b Description:
-  = @ram.description
-%p
-  %b Image:
-  = @ram.image
-%p
-  %b Company:
-  = @ram.company
-%p
-  %b Price:
-  = @ram.price
-%p
-  %b Ram type:
-  = @ram.ram_type
-%p
-  %b Volume:
-  = @ram.volume
-
-= link_to 'Edit', edit_ram_path(@ram)
-\|
-= link_to 'Back', rams_path
+  = image_tag(@ram.image.url(:med), class: "left_img") if @ram.image.exists?
+  %p
+    = @ram.description
+  %p
+    %b Компания:
+    = @ram.company.name
+  %p
+    %b Цена:
+    = @ram.price
+  %p
+    %b Тип памяти:
+    #{@ram.ram_type.name}-#{@ram.ram_type.speed}
+  %p
+    %b Объем:
+    #{@ram.volume} Гб
