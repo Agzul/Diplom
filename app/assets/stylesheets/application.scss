@@ -58,7 +58,9 @@ body {
     width: 10%;
     display: inline-block;
     position: relative;
-    // top: 29px;
+    @-moz-document url-prefix() {
+      top: 29px;
+    }
     label{
       display: none;
     }
@@ -71,4 +73,7 @@ body {
 .left_img{
   float:left;
   margin: 10px 10px 10px 0;
+}
+.sub{
+  margin-right: 5px;
 }
